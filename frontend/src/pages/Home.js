@@ -15,10 +15,9 @@ const Home = () => {
     const  onClick = (event) => {
         if (event.target.checked) {
         updateCats([...cats, event.target.value])
-        } else if (!event.target.checked && cats.length === 1) {
-            updateCats([])
-        } else if (!event.target.checked) {
-            updateCats([cats.splice(cats.indexOf(event.target.value))])
+        } else {
+            let elementToRemove = event.target.value
+            updateCats(prev => prev.filter(cats => cats !== elementToRemove ))
         }
     }
 
@@ -26,7 +25,7 @@ const Home = () => {
     return (
         <div className="categories">
             <h2>categories</h2>
-            <div className="checkbox">music<input type="checkbox" onChange={onClick} name="layerone" value="music" /><br /></div>
+            <div className="checkbox">music<input type="checkbox" onChange={(event) => onClick(event)} name="layerone" value="music" /><br /></div>
             
             <div className="checkbox">sports<input type="checkbox" onChange={onClick} name="layerone" value="sports" /><br /></div>
             
@@ -34,7 +33,7 @@ const Home = () => {
             
             <br />
             <br />
-            <p><b>categories selected:</b> { cats.join(' ') } </p>
+            <p><b>categories selected:</b> { cats.join(', ') } </p>
 
 
 </div>
