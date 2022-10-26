@@ -3,6 +3,10 @@ import Categories from './pages/Categories'
 import Signup from './pages/Signup'
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
+import Event from './pages/Event'
+import Chat from './pages/Chat'
+import Dash from './pages/Dash'
+import Match from './pages/Match'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -17,6 +21,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/dash" element={<Dash />} />
+          <Route path="/match" element={<Match />} />
         </Routes>
       </div>
       </BrowserRouter>    

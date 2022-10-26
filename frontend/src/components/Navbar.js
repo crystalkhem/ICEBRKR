@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
 return(
     <div className="navbar">
-          <Link to="/match">match</Link> |  <Link to="/match">chat</Link> |  <Link to="/events">events</Link>
+          <Link to="/dash">dashboard</Link> | <Link to="/match">match up!</Link> |  <Link to="/chat">chat</Link> |  <Link to="/event">event creation</Link>
   
     </div>
 )

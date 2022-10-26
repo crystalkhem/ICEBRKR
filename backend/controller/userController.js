@@ -41,5 +41,16 @@ const signupUser = async (req,res) => {
     }
 }
 
+const registerUser = async (req,res) => {
+    const {email, password, categories} = req.body
+    
+    try {
+        const user = await User.create({email, password, categories})
+        res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
 
-module.exports = { loginUser, signupUser }
+
+module.exports = { loginUser, signupUser, registerUser }
