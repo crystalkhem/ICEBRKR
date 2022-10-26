@@ -1,14 +1,5 @@
 import { useState } from 'react'
-// import { BrowserRouter as Router, Link } from 'react-router-dom'
-const Home = () => {
-
-    // const checkboxes = document.querySelectorAll('.checkbox')
-
-    // const handleCheckbox = event => {
-    //     console.log(event.target.value)
-    //      console.log('this is all of them:' + checkboxes)
-        
-    // }
+const Categories = () => {
 
     const [cats, updateCats] = useState([])
 
@@ -42,4 +33,4 @@ const Home = () => {
     }
 
 
-export default Home
+export default Categories
