@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -9,6 +9,8 @@ const Signup = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+
+        // const navigate = useNavigate()
 
         const user = {password, email}
 
@@ -34,6 +36,8 @@ const Signup = () => {
 
 
         console.log('this code ran')
+        // navigate("/dash")
+
     }
 
     return (

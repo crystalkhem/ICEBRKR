@@ -19,11 +19,11 @@ function App() {
       <div className="pages">
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/dash" exact element={<Dash />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/event" element={<Event />} />
           <Route path="/chat" element={<Chat />} />
-          <Route path="/dash" element={<Dash />} />
           <Route path="/match" element={<Match />} />
         </Routes>
       </div>

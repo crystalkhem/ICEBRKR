@@ -19,6 +19,6 @@ const eventSchema = new Schema( {
         require: true,
         type: String
     }
-})
+}, { timestamps: true})
 
-module.exports = mongoose.model('Event', eventSchema)
+module.exports = mongoose.model('Events', eventSchema)
