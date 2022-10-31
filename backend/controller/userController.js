@@ -1,6 +1,5 @@
-const express = require('express')
-const User = require('../models/userModel')
-const jwt = require('jsonwebtoken')
+import User from '../models/userModel.js'
+import jwt from 'jsonwebtoken';
 
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
@@ -8,7 +7,7 @@ const createToken = (_id) => {
 
 //controller functions
 //login user
-const loginUser = async (req,res) => {
+export const loginUser = async (req,res) => {
     const {email, password} = req.body
 
     try {
@@ -25,7 +24,7 @@ const loginUser = async (req,res) => {
 }
 
 //signup user
-const signupUser = async (req,res) => {
+export const signupUser = async (req,res) => {
     const {email, password} = req.body
 
     try {
@@ -41,7 +40,7 @@ const signupUser = async (req,res) => {
     }
 }
 
-const registerUser = async (req,res) => {
+export const registerUser = async (req,res) => {
     const {email, password, categories} = req.body
     
     try {
@@ -53,4 +52,4 @@ const registerUser = async (req,res) => {
 }
 
 
-module.exports = { loginUser, signupUser, registerUser }
+// module.exports = { loginUser, signupUser, registerUser }

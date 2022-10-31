@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import EventDetails from "../components/EventDetails"
+import './Dash.css';
 
 const Dash = () => {
     const [events, setEvents] = useState(null)
@@ -8,7 +9,6 @@ const Dash = () => {
         const fetchEvents = async () => {
             const response = await fetch('http://localhost:4000/events')
             const json = await response.json()
-            console.log('yee yee bitches')
 
             if (response.ok) {
                 setEvents(json)
@@ -21,7 +21,7 @@ const Dash = () => {
     return(
         <div className="dash">
             <div className="workouts">
-            <h3><u><i>upcoming events</i></u></h3> 
+            <h3><u><i>Upcoming events</i></u></h3> 
                 {events && events.map((event) => (
                     <EventDetails key={event._id} event={event} />
                 ))}

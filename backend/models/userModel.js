@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const bcrpyt = require('bcrypt')
-const validator = require('validator')
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import validator from 'validator';
 
 const Schema = mongoose.Schema
 
@@ -41,8 +41,8 @@ userSchema.statics.signup = async function(email, password) {
         throw Error('Email already in use')
     }
 
-    const salt = await bcrpyt.genSalt(10)
-    const hash = await bcrpyt.hash(password, salt)
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
 
     const user = await this.create({email, password: hash})
 
@@ -74,4 +74,6 @@ userSchema.statics.login = async function(email, password) {
 }
 
 
-module.exports = mongoose.model('User', userSchema)
+let User = mongoose.model('User', userSchema);
+
+export default User;
