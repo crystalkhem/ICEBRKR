@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthContext } from "./useAuthContext";
+import { useAuthContext } from "./useAuthContext"
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -30,6 +30,7 @@ export const useLogin = () => {
 
       // update loading state
       setIsLoading(false);
+
     }
   };
 

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import './Event.css';
 
 const Signup = () => {
     const [name, setName] = useState('')
@@ -15,7 +15,7 @@ const Signup = () => {
 
         const events = {name, date, time, description, category}
 
-        const response = await fetch('http://localhost:4000/events', {
+        const response = await fetch('http://localhost:4000/api/events/', {
             method: 'POST',
             body: JSON.stringify(events),
             headers: {
@@ -58,16 +58,18 @@ const Signup = () => {
         <br />
 
         <label>Category: </label>
-          <input type="radio" onChange={(event) => setCategory(event.target.value)} value='music' />
-          music <input type="radio" onChange={(event) => setCategory(event.target.value)} value='sports' />
-         sports<input type="radio" onChange={(event) => setCategory(event.target.value)} value='movies' /> movies <br />
-
+        <div className="cat">   <input type="radio" onChange={(event) => setCategory(event.target.value)} value='music' />music 
+          <input type="radio" onChange={(event) => setCategory(event.target.value)} value='sports' /> sports
+         <input type="radio" onChange={(event) => setCategory(event.target.value)} value='movies' /> movies 
+</div>
+       <br />
         <label>Description: </label>
          <input type="text" onChange={(event) => setDescription(event.target.value)} value={description} />
         <br />
 
 
         <button>submit</button>
+        {error && <div className="error">{error}</div>}
         <br/>
         
         </form>
