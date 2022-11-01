@@ -3,6 +3,8 @@ const router = express.Router()
 // const {createEvent, getEvents} = require('../controller/eventController')
 import {createEvent, getEvents} from '../controller/eventController.js'
 
+import requireAuth from '../middleware/requireAuth.js'
+
 //post route for creating an event
 router.post('/', createEvent)
 router.get('/', getEvents)

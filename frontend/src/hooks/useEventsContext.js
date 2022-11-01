@@ -6,7 +6,7 @@ export const useEventsContext = () => {
 
   if (!context) {
     throw Error(
-      "useEventsContext must be used inside an EventsContextProvider"
+      "Incorrect Format"
     );
   }
 

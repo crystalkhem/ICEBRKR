@@ -12,6 +12,8 @@ const Login = () => {
     event.preventDefault();
 
     await login(email, password);
+
+
   };
 
   return (

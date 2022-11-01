@@ -25,6 +25,16 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
+                  to="/dash"
+                  activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  exact
                   to="/event"
                   activeClassName="selected-nav-link"
                   className="link nav-link"
@@ -45,13 +55,20 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
-                  to="/dash"
+                  onClick={() => handleClick()}
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  Dashboard
+                  LOGOUT: {user.email}
                 </NavLink>
               </li>
+            </ul>
+          ) : (
+            //   <div>
+            //     <span>{user.email}</span>
+            //     <button onClick={handleClick}>Logout</button>
+            //   </div>
+            <ul className="list-style-reset nav-links-list">
               <li>
                 <NavLink
                   exact
@@ -70,33 +87,6 @@ const Navbar = () => {
                   className="link nav-link"
                 >
                   SIGN UP
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  exact
-                  onClick={() => handleClick()}
-                  activeClassName="selected-nav-link"
-                  className="link nav-link"
-                >
-                  {user.email}LOGOUT
-                </NavLink>
-              </li>
-            </ul>
-          ) : (
-            //   <div>
-            //     <span>{user.email}</span>
-            //     <button onClick={handleClick}>Logout</button>
-            //   </div>
-            <ul>
-              <li>
-                <NavLink
-                  exact
-                  to="/login"
-                  activeClassName="selected-nav-link"
-                  className="link nav-link"
-                >
-                  LOGIN
                 </NavLink>
               </li>
             </ul>
