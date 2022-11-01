@@ -34,11 +34,17 @@ function App() {
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
             />
-            <Route path="/dash" element={user ? <Dash />: <Navigate to="/login"/>} />
+            <Route
+              path="/dash"
+              element={user ? <Dash /> : <Navigate to="/login" />}
+            />
             <Route path="/categories" element={<Categories />} />
             <Route path="/event" element={<Event />} />
             <Route path="/chat" element={<Chat />} />
-            <Route path="/match" element={user ? <Match />: <Navigate to="login"/>} />
+            <Route
+              path="/match"
+              element={user ? <Match /> : <Navigate to="login" />}
+            />
           </Routes>
         </div>
       </BrowserRouter>

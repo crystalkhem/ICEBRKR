@@ -29,7 +29,7 @@ const Navbar = () => {
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  Dashboard
+                  Match Up!
                 </NavLink>
               </li>
               <li>
@@ -76,7 +76,7 @@ const Navbar = () => {
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  LOGIN
+                  Log in
                 </NavLink>
               </li>
               <li>
