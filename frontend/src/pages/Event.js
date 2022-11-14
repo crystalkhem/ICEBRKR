@@ -71,6 +71,7 @@ const Signup = () => {
         <br/>
         
         </form>
+        <p><b>already have an account?</b> <Link to="/">log in here.</Link></p>
         </div>
     )
 }
