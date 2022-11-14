@@ -8,17 +8,19 @@ import Chat from './pages/Chat'
 import Dash from './pages/Dash'
 import Match from './pages/Match'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-       <b><h1>WELCOME TO ICEBRKR <i>!!</i></h1></b> 
+       {/* <b><h1>WELCOME TO ICEBRKR <i>!!</i></h1></b>  */}
       <BrowserRouter>
       <Navbar/>
       <br/>
       <div className="pages">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/dash" exact element={<Dash />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/categories" element={<Categories />} />

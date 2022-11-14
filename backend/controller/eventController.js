@@ -1,7 +1,14 @@
-const express = require('express')
-const Events = require('../models/eventModel')
+import Events from '../models/eventModel.js'
 
-const createEvent = async (req,res) => {
+
+// get all events
+export const getEvents = async (req,res) => {
+    const events = await Events.find({}).sort({createdAt: -1})
+
+    res.status(200).json(events)
+}
+
+export const createEvent = async (req,res) => {
     const {name, date, time, description, category} = req.body
     
     try {
@@ -12,12 +19,7 @@ const createEvent = async (req,res) => {
     }
 }
 
-// get all events
-const getEvents = async (req,res) => {
-    const events = await Events.find({}).sort({createdAt: -1})
-
-    res.status(200).json(events)
-}
 
 
-module.exports = {createEvent, getEvents}
+
+// module.exports = {createEvent, getEvents}
