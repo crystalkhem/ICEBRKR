@@ -22,16 +22,6 @@ const Navbar = () => {
         <nav className="header-nav">
           {user ? (
             <ul className="list-style-reset nav-links-list">
-                              <li>
-                <NavLink
-                  exact
-                  to="/dash"
-                  activeClassName="selected-nav-link"
-                  className="link nav-link"
-                >
-                  Dashboard
-                </NavLink>
-              </li>
               <li>
                 <NavLink
                   exact
@@ -50,6 +40,16 @@ const Navbar = () => {
                   className="link nav-link"
                 >
                   Match Up!
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  exact
+                  to="/dash"
+                  activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  Dashboard
                 </NavLink>
               </li>
               <li>
@@ -79,7 +79,7 @@ const Navbar = () => {
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  LOGOUT: {user.email}
+                  {user.email}LOGOUT
                 </NavLink>
               </li>
             </ul>
@@ -96,7 +96,7 @@ const Navbar = () => {
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  Log in
+                  LOGIN
                 </NavLink>
               </li>
             </ul>

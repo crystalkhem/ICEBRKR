@@ -7,7 +7,7 @@ const Dash = () => {
 
     useEffect(() => {
         const fetchEvents = async () => {
-            const response = await fetch('http://localhost:4000/api/events')
+            const response = await fetch('http://localhost:4000/events')
             const json = await response.json()
 
             if (response.ok) {
@@ -21,7 +21,7 @@ const Dash = () => {
     return(
         <div className="dash">
             <div className="workouts">
-            <h3><b>Upcoming Events</b></h3> 
+            <h3><u><i>Upcoming events</i></u></h3> 
                 {events && events.map((event) => (
                     <EventDetails key={event._id} event={event} />
                 ))}

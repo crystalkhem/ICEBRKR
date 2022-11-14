@@ -1,17 +1,43 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
-import { useSignup } from "../hooks/useSignup"
+import { Link, useNavigate } from "react-router-dom"
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const {signup, error, isLoading} = useSignup()
+    const [error, setError] = useState('null')
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleSubmit = async (event) => {
+        event.preventDefault()
 
-        await signup(email, password)
+        // const navigate = useNavigate()
+
+        const user = {password, email}
+
+        const response = await fetch('http://localhost:4000/user/register', {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await response.json()
+
+        // see if response is ok 
+        if (!response.ok) {
+            setError(json.error)
+            console.log({error})
+        }
+        
+        if (response.ok) {
+            setError(null)
+            console.log('new workout added', json)
+        }
+
+
+        console.log('this code ran')
+        // navigate("/dash")
+
     }
 
     return (
@@ -26,9 +52,9 @@ const Signup = () => {
         <label>Password: </label>
          <input type="password" onChange={(event) => setPassword(event.target.value)} value={password} />
         <br />
-        <button disabled={isLoading}>sign up</button>
-        {error && {error}}
+        <button>log in</button>
         <br/>
+        {error}
         
         </form>
         <p><b>already have an account?</b> <Link to="/">log in here.</Link></p>
