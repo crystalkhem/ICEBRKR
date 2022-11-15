@@ -35,12 +35,12 @@ const Signup = () => {
         <label>Password: </label>
          <input type="password" onChange={(event) => setPassword(event.target.value)} value={password} />
         <br />
-        <button>log in</button>
+        <button>submit</button>
         <br/>
         {error}
         
         </form>
-        <p><b>already have an account?</b> <Link to="/">log in here.</Link></p>
+        <p><b>already have an account?</b> <Link to="/login">log in here.</Link></p>
         </div>
     )
 }

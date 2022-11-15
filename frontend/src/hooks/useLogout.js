@@ -6,12 +6,14 @@ export const useLogout = () => {
   const { dispatch: dispatchEvents } = useEventsContext();
 
   const logout = () => {
+    
     // remove user from storage
     localStorage.removeItem("user");
 
     // dispatch logout action
     dispatch({ type: "LOGOUT" });
     dispatchEvents({ type: "SET_EVENTS", payload: null });
+    
   };
 
   return { logout };

@@ -11,7 +11,9 @@ const Navbar = () => {
 
   const handleClick = () => {
     logout();
+    
   };
+
   return (
     <>
       <header className="header">
@@ -22,6 +24,16 @@ const Navbar = () => {
         <nav className="header-nav">
           {user ? (
             <ul className="list-style-reset nav-links-list">
+                <li>
+                <NavLink
+                  exact
+                  to="/dash"
+                  activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  Dashboard
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   exact
@@ -45,17 +57,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
-                  to="/dash"
-                  activeClassName="selected-nav-link"
-                  className="link nav-link"
-                >
-                  Dashboard
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  exact
-                  onClick={() => handleClick()}
+                  onClick={() => handleClick()} to="/login"
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >

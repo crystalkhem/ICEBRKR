@@ -59,10 +59,11 @@ const Signup = () => {
         <br />
 
         <label>Category: </label>
-          <input type="radio" onChange={(event) => setCategory(event.target.value)} value='music' />
+         <input type="radio" onChange={(event) => setCategory(event.target.value)} value='music' />
           music <input type="radio" onChange={(event) => setCategory(event.target.value)} value='sports' />
          sports<input type="radio" onChange={(event) => setCategory(event.target.value)} value='movies' /> movies <br />
-
+         
+         
         <label>Description: </label>
          <input type="text" onChange={(event) => setDescription(event.target.value)} value={description} />
         <br />
@@ -74,8 +75,7 @@ const Signup = () => {
         <br/>
         
         </form>
-        <p><b>already have an account?</b> <Link to="/">log in here.</Link></p>
-        </div>
+         </div>
     )
 }
 
