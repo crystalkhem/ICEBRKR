@@ -4,19 +4,19 @@ const Schema = mongoose.Schema
 
 const eventSchema = new Schema( {
     name: {
-        required: true,
+        require: true,
         type: String
     },    date: {
-        required: true,
-        type: Date
+        require: true,
+        type: String
     },   time: {
-        required: true,
+        require: true,
         type: String
     },    category: {
-        required: true,
+        require: true,
         type: String
     },    description: {
-        required: true,
+        require: true,
         type: String
     }
 }, { timestamps: true})
