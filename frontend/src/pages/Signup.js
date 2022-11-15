@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { useSignup } from "../hooks/useSignup"
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('null')
+  const { signup, isLoading, error  } = useSignup();
 
 
     const handleSubmit = async (event) => {
@@ -12,27 +13,9 @@ const Signup = () => {
 
         // const navigate = useNavigate()
 
-        const user = {password, email}
-
-        const response = await fetch('http://localhost:4000/user/register', {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        const json = await response.json()
+        await signup(email, password)
 
         // see if response is ok 
-        if (!response.ok) {
-            setError(json.error)
-            console.log({error})
-        }
-        
-        if (response.ok) {
-            setError(null)
-            console.log('new workout added', json)
-        }
 
 
         console.log('this code ran')

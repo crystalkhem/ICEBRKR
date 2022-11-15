@@ -55,31 +55,11 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
-                  to="/login"
-                  activeClassName="selected-nav-link"
-                  className="link nav-link"
-                >
-                  LOGIN
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  exact
-                  to="/signup"
-                  activeClassName="selected-nav-link"
-                  className="link nav-link"
-                >
-                  SIGN UP
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  exact
                   onClick={() => handleClick()}
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  {user.email}LOGOUT
+                  LOGOUT {user.email}
                 </NavLink>
               </li>
             </ul>
