@@ -7,6 +7,7 @@ import Event from './pages/Event'
 import Chat from './pages/Chat'
 import Dash from './pages/Dash'
 import Match from './pages/Match'
+import Profile from './pages/ProfileCreate';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/event" element={<Event />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/match" element={<Match />} />
+          <Route path="/profileCreate" element={<Profile />} />
         </Routes>
       </div>
       </BrowserRouter>    

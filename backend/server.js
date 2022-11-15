@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import userRoutes from './routes/user.js'
 import eventRoutes from './routes/events.js'
+import profileRoutes from './routes/profiles.js'
 import cors from 'cors';
 
 const app = express()
@@ -12,6 +13,7 @@ app.use(cors())
 
 app.use('/api/user', userRoutes)
 app.use('/api/events', eventRoutes)
+app.use('/api/profiles', profileRoutes)
 
 
 

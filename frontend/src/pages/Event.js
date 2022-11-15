@@ -15,7 +15,7 @@ const Signup = () => {
 
         const events = {name, date, time, description, category}
 
-        const response = await fetch('http://localhost:4000/events', {
+        const response = await fetch('http://localhost:4000/api/events', {
             method: 'POST',
             body: JSON.stringify(events),
             headers: {
@@ -33,6 +33,7 @@ const Signup = () => {
         if (response.ok) {
             setError(null)
             console.log('new event added', json)
+            setError('Event Added Successfully')
         }
 
 
@@ -68,6 +69,8 @@ const Signup = () => {
 
 
         <button>submit</button>
+        <br /><br />
+        {error}
         <br/>
         
         </form>
