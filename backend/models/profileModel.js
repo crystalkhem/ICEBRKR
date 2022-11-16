@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema
 
 const profileSchema = new Schema( {
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    },
     name: {
         require: true,
         type: String
@@ -15,7 +19,7 @@ const profileSchema = new Schema( {
     },    bio: {
         require: true,
         type: String
-    },
+    }
 }, { timestamps: true})
 
 let Profiles = mongoose.model('Profiles', profileSchema)

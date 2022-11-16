@@ -11,7 +11,7 @@ const Profile = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        const profile = {name, age, major, bio}
+        const profile = {user, name, age, major, bio}
 
         const response = await fetch('http://localhost:4000/api/profiles', {
             method: 'POST',

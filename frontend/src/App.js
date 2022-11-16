@@ -8,6 +8,7 @@ import Chat from './pages/Chat'
 import Dash from './pages/Dash'
 import Match from './pages/Match'
 import Profile from './pages/ProfileCreate';
+import MyProfile from './pages/MyProfile';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/match" element={<Match />} />
           <Route path="/profileCreate" element={<Profile />} />
+          <Route path="/profiles/me" element={<MyProfile />} />
         </Routes>
       </div>
       </BrowserRouter>    
