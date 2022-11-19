@@ -29,7 +29,7 @@ function App() {
           <Route path="/event" element={<Event />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/match" element={<Match />} /> 
-          <Route path="/profileCreate" element={<ProfileEdit />} />
+          <Route path="/profileEdit" element={<ProfileEdit />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

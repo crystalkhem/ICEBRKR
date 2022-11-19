@@ -27,15 +27,15 @@ export const loginUser = async (req,res) => {
 
 //signup user
 export const signupUser = async (req,res) => {
-    const {email, password, firstName, lastName} = req.body
+    const {email, password, firstName, lastName, categories} = req.body
 
     try {
-        const user = await User.signup(email, password, firstName, lastName)
+        const user = await User.signup(email, password, firstName, lastName, categories)
 
         //create token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token, firstName, lastName})
+        res.status(200).json({email, token, firstName, lastName, categories})
 
     } catch (error) {
         res.status(400).json({error: error.message})

@@ -8,14 +8,14 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext();
   const navigate = useNavigate()
 
-  const signup = async (email, password, firstName, lastName) => {
+  const signup = async (email, password, firstName, lastName, categories) => {
     setIsLoading(true);
     setError(null);
 
     const response = await fetch("http://localhost:4000/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, firstName, lastName }),
+      body: JSON.stringify({ email, password, firstName, lastName, categories }),
     });
     const json = await response.json();
 
@@ -26,6 +26,7 @@ export const useSignup = () => {
     }
     if (response.ok) {
       // save the user to local storage
+      console.log({categories})
       localStorage.setItem("user", JSON.stringify(json));
 
       // update the auth context

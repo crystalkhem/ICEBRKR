@@ -59,7 +59,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
-                  to="/profileCreate"
+                  to="/profileEdit"
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >

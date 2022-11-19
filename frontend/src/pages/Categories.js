@@ -15,7 +15,7 @@ const Categories = () => {
 
     return (
         <div className="categories">
-            <h2>categories</h2>
+            categories
             <div className="checkbox">music<input type="checkbox" onChange={(event) => onClick(event)} name="layerone" value="music" /><br /></div>
             
             <div className="checkbox">sports<input type="checkbox" onChange={onClick} name="layerone" value="sports" /><br /></div>
