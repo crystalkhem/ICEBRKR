@@ -6,6 +6,8 @@ const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
   const { signup, isLoading, error  } = useSignup();
+  const firstName = "toBeFilled"
+  const lastName = "toBeFilled"
 
 
     const handleSubmit = async (event) => {
@@ -13,7 +15,7 @@ const Signup = () => {
 
         // const navigate = useNavigate()
 
-        await signup(email, password)
+        await signup(email, password, firstName, lastName)
 
         // see if response is ok 
 
