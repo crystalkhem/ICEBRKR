@@ -57,6 +57,26 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
+                  to="/profileCreate"
+                  activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  Create Profile
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  exact
+                  to="/profiles"
+                  activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  Profiles
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  exact
                   onClick={() => handleClick()} to="/login"
                   activeClassName="selected-nav-link"
                   className="link nav-link"

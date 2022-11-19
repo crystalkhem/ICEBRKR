@@ -25,10 +25,10 @@ export const loginUser = async (req,res) => {
 
 //signup user
 export const signupUser = async (req,res) => {
-    const {email, password} = req.body
+    const {email, password, firstName, lastName} = req.body
 
     try {
-        const user = await User.signup(email, password)
+        const user = await User.signup(email, password, firstName, lastName)
 
         //create token
         const token = createToken(user._id)
@@ -40,16 +40,16 @@ export const signupUser = async (req,res) => {
     }
 }
 
-export const registerUser = async (req,res) => {
-    const {email, password, categories} = req.body
+// export const registerUser = async (req,res) => {
+//     const {email, password, } = req.body
     
-    try {
-        const user = await User.create({email, password, categories})
-        res.status(200).json(user)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}
+//     try {
+//         const user = await User.create({email, password, categories})
+//         res.status(200).json(user)
+//     } catch (error) {
+//         res.status(400).json({error: error.message})
+//     }
+// }
 
 
 // module.exports = { loginUser, signupUser, registerUser }
