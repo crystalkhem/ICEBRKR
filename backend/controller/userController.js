@@ -11,12 +11,13 @@ export const loginUser = async (req,res) => {
     const {email, password} = req.body
 
     try {
+        
         const user = await User.login(email, password)
 
         //create token
         const token = createToken(user._id)
-
-        res.status(200).json({email, token})
+ 
+        res.status(200).json({_id:user._id, name: `${user.firstName} ${user.lastName}`, email: user.email, firstName: user.firstName, lastName: user.lastName, token: token})
 
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -33,7 +34,7 @@ export const signupUser = async (req,res) => {
         //create token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token})
+        res.status(200).json({email, token, firstName, lastName})
 
     } catch (error) {
         res.status(400).json({error: error.message})

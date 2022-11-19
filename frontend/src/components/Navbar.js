@@ -14,6 +14,8 @@ const Navbar = () => {
     
   };
 
+  const name = user?`${user.firstName} ${user.lastName}`:"";
+
   return (
     <>
       <header className="header">
@@ -67,11 +69,11 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact
-                  to="/profiles"
+                  to="/profile"
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  Profiles
+                  View Profile
                 </NavLink>
               </li>
               <li>
@@ -81,7 +83,7 @@ const Navbar = () => {
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  LOGOUT {user.email}
+                  LOGOUT: {name}
                 </NavLink>
               </li>
             </ul>
