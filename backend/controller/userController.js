@@ -1,5 +1,6 @@
 import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
@@ -41,16 +42,21 @@ export const signupUser = async (req,res) => {
     }
 }
 
-// export const registerUser = async (req,res) => {
-//     const {email, password, } = req.body
-    
-//     try {
-//         const user = await User.create({email, password, categories})
-//         res.status(200).json(user)
-//     } catch (error) {
-//         res.status(400).json({error: error.message})
-//     }
-// }
 
+export const updateProfile = async (req, res) => {
+    const { id } = req.params 
 
-// module.exports = { loginUser, signupUser, registerUser }
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such profile'})
+    }
+
+    const profile = await User.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+
+    if (!profile) {
+        return res.status(404).json({error: 'no such profile'})
+    }
+
+    res.status(200).json(profile)
+    }
