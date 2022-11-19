@@ -20,12 +20,12 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    // categories: {
-    //     type: [String]
-    // },
-    // dob: {
-    //     type: Date,
-    // },
+    categories: {
+        type: [String]
+    },
+    dob: {
+        type: Date,
+    },
     // createdAt: {
     //     type: Date,
     //     default: new Date(),

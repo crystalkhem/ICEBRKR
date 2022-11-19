@@ -63,7 +63,7 @@ const Navbar = () => {
                   activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  Create Profile
+                  Edit Profile
                 </NavLink>
               </li>
               <li>

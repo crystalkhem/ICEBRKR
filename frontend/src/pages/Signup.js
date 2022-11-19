@@ -5,13 +5,11 @@ import { useSignup } from "../hooks/useSignup"
 const Signup = () => {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    // const [dob, setDob ] = useState('')
-    // const [image, setImage] = useState('')
+    const [dob, setDob ] = useState('')
+    const [image, setImage] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
   const { signup, isLoading, error  } = useSignup();
-  const firstName = "toBeFilled"
-  const lastName = "toBeFilled"
 
 
     const handleSubmit = async (event) => {
@@ -36,7 +34,7 @@ const Signup = () => {
         <div style={{"display": "flex"}}>
         <label>First Name: </label>
          <input type="text" onChange={(event) => setFirstName(event.target.value)} value={firstName} />
-        <br />
+         <br />
 
         <label>Last Name: </label>
          <input type="text" onChange={(event) => setLastName(event.target.value)} value={lastName} />

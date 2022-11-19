@@ -6,8 +6,8 @@ import Navbar from './components/Navbar';
 import Event from './pages/Event'
 import Chat from './pages/Chat'
 import Dash from './pages/Dash'
-// import Match from './pages/Match'
-// import CreateProfile from './pages/ProfileCreate';
+import Match from './pages/Match'
+import ProfileEdit from './pages/ProfileEdit';
 import Profile from './pages/Profile'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home";
@@ -28,8 +28,8 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/event" element={<Event />} />
           <Route path="/chat" element={<Chat />} />
-          {/* <Route path="/match" element={<Match />} /> */}
-          {/* <Route path="/profileCreate" element={<CreateProfile />} /> */}
+          <Route path="/match" element={<Match />} /> 
+          <Route path="/profileCreate" element={<ProfileEdit />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
