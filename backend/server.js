@@ -32,7 +32,13 @@ mongoose.connect(process.env.URI)
 
         io.on('connection', socket => {
             console.log('hello we made it', socket.id)
+
+            socket.on('send_message', (data) => {
+              console.log(data)
+              socket.broadcast.emit('get_message', data)
+            })
         })
+
 
     }) .catch((error) => console.log(error))
 

@@ -1,12 +1,30 @@
 import io from 'socket.io-client'
+import { useEffect, useState } from 'react'
+import { useAuthContext } from '../hooks/useAuthContext'
 
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('http://localhost:4000/')
 
 const Chat = () => {
-    socket.emit('connection')
+    const { user } = useAuthContext();
+    const [inputmsg, setMsg] = useState('zero message')
+    const [outputmsg, setOutputMsg] = useState('zero message')
+
+    const sendMessage = (event) => {
+        socket.emit('send_message', user.firstName + ': ' + inputmsg)
+    }
+   
+    useEffect(() => {
+        socket.on('get_message', data => {
+            setOutputMsg(data)
+        })
+    })
 
     return(
-        <table></table>
+    <div className="chatbox"><h1>chatbox coming soon</h1>
+    <input type='text' onChange={(event) => setMsg(event.target.value)} placeholder="write a message"></input>
+    <button onClick={sendMessage}>enter</button>
+    <br />{outputmsg}
+    </div>
     )
 }
 
