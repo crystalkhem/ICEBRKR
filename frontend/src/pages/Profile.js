@@ -10,15 +10,17 @@ const Profile = () => {
         <div>
            {user &&( <div style={{display: "flex", justifyContent: "space-between"}}>
             <div>
-                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
+                <img src={user.image} alt=""/>
             </div>
             <div>
+            <button>edit</button>
             <h1>Name: {user.firstName}</h1>
             <p>Email: {user.email}</p>
             <p>Date of Birth: xx-xx-xxxx</p>
             <p>Major: comp sci</p>
-            <p>Interests: abc abc abc</p> 
+            <p>Interests: abc abc abc</p>
             <p>Bio: This is the bio</p>
+
             </div>
             </div>
            )}

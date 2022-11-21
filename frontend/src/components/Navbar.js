@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+// import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import "./Navbar.css";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -20,17 +20,17 @@ const Navbar = () => {
     <>
       <header className="header">
         <Link to="/" className=" header-logo">
-          <AccessibilityNewIcon />
+          {/* <AccessibilityNewIcon /> */}
           ICEBRKR
         </Link>
         <nav className="header-nav">
           {user ? (
-            <ul className="list-style-reset nav-links-list">
+            <ul className="nav-links-list">
                 <li>
                 <NavLink
-                  exact
+                  exact="true"
                   to="/dash"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   Dashboard
@@ -38,9 +38,9 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  exact
+                  exact="true"
                   to="/event"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   Events
@@ -48,9 +48,9 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  exact
+                  exact="true"
                   to="/match"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   Match Up!
@@ -58,9 +58,9 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  exact
+                  exact="true"
                   to="/profileEdit"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   Edit Profile
@@ -68,9 +68,9 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  exact
+                  exact="true"
                   to="/profile"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   View Profile
@@ -78,9 +78,19 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  exact
+                  exact="true"
+                  to="/users"
+                  // activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  All users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  exact="true"
                   onClick={() => handleClick()} to="/login"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   LOGOUT: {name}
@@ -92,12 +102,12 @@ const Navbar = () => {
             //     <span>{user.email}</span>
             //     <button onClick={handleClick}>Logout</button>
             //   </div>
-            <ul>
+            <ul className="nav-links-list">
               <li>
                 <NavLink
-                  exact
+                  exact="true"
                   to="/login"
-                  activeClassName="selected-nav-link"
+                  // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
                   LOGIN

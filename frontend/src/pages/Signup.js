@@ -4,9 +4,10 @@ import { useSignup } from "../hooks/useSignup"
 import './Signup.css'
 
 const Signup = () => {
+
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [dob, setDob ] = useState('')
+    // const [dob, setDob ] = useState('')
     const [image, setImage] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -22,12 +23,25 @@ const Signup = () => {
       }
   }
 
+  const handleImage = (event) => {
+    const file = event.target.files[0];
+    setFileToBase(file);
+  }
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+        setImage(reader.result);
+    }
+  }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         // const navigate = useNavigate()
 
-        await signup(email, password, firstName, lastName, categories)
+        await signup(email, password, firstName, lastName, categories, image)
 
         // see if response is ok 
 
@@ -61,11 +75,8 @@ const Signup = () => {
 
         {/* <label>Date of Birth: </label>
          <input type="date" onChange={(event) => setDob(event.target.value)} value={dob} />
-        <br />
-
-        <label>Upload Image: </label>
-         <input type="image" id="image-input" accept="image/jpeg, image/png, image/jpg" onChange={(event) => setImage(event.target.value)} value={image} />
         <br /> */}
+        
         <label><b>Email: </b></label>
          <input type="email" onChange={(event) => setEmail(event.target.value)} value={email} />
         <br />
@@ -73,6 +84,10 @@ const Signup = () => {
         <label><b>Password:</b> </label>
          <input type="password" onChange={(event) => setPassword(event.target.value)} value={password} />
         <br />
+
+        <b><label>Upload Image: </label></b>
+         <input onChange={handleImage} type="file" id="imageupload"  name="image"/>
+        <br /> 
 
         <button>submit</button>
         <br/>
@@ -84,4 +99,4 @@ const Signup = () => {
     )
 }
 
-export default Signup 
+export default Signup

@@ -11,6 +11,7 @@ import ProfileEdit from './pages/ProfileEdit';
 import Profile from './pages/Profile'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from "./pages/Home";
+import Users from "./pages/Users"
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/match" element={<Match />} /> 
           <Route path="/profileEdit" element={<ProfileEdit />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </div>
       </BrowserRouter>    

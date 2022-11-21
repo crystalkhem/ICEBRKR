@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import TinderCard from "react-tinder-card";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import Button from "@material-ui/core/Button";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ThumbDownIcon from "@material-ui/icons/ThumbDown";
+// import Button from "@material-ui/core/Button";
 import "./Match.css";
 
 const db = [
@@ -27,11 +27,29 @@ const alreadyRemoved = [];
 let peopleState = db;
 
 const Match = () => {
+
+    // const [users, setUsers] = useState(null)
+
+    // useEffect(() => {
+    //     const fetchUsers = async () => {
+    //         const response = await fetch('http://localhost:4000/api/user/all-users')
+    //         const json = await response.json()
+
+    //         if (response.ok) {
+    //             setUsers(json)
+    //         }
+    //     }
+
+    //     fetchUsers()
+    // }, [])
+
+    // console.log(users)
+
   const [people, setPeople] = useState(db);
 
   const childRefs = useMemo(
     () =>
-      Array(db.length)
+      Array(db?.length)
         .fill(0)
         .map((i) => React.createRef()),
     []
@@ -60,7 +78,7 @@ const Match = () => {
             preventSwipe={["up", "down"]}
           >
             <div
-              style={{ backgroundImage: `url(${person.url})` }}
+              style={{ backgroundImage: "img" }}
               className="card"
             >
               <h3>{person.name}</h3>
@@ -69,24 +87,24 @@ const Match = () => {
         ))}
       </div>
       <div className="swipe_Buttons">
-        <Button
+        <button
           variant="contained"
           color="secondary"
-          startIcon={<ThumbDownIcon />}
+        //   startIcon={<ThumbDownIcon />}
           onClick={() => swipe("left")}
         >
           Freeze
-        </Button>
-        <Button
+        </button>
+        <button
           variant="contained"
           color="primary"
-          startIcon={<FavoriteIcon />}
+        //   startIcon={<FavoriteIcon />}
           onClick={() => swipe("right")}
         >
           Break
-        </Button>
+        </button>
       </div>
-      <Button variant="contained">View Profile</Button>
+      <button variant="contained">View Profile</button>
     </div>
   );
 };

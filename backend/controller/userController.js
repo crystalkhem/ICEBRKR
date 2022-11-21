@@ -6,6 +6,11 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
 }
 
+export const getUsers = async ( req, res ) => {
+    const users = await User.find({}, { password: false }).sort({});
+    res.json(users);
+}
+
 //controller functions
 //login user
 export const loginUser = async (req,res) => {
@@ -27,15 +32,23 @@ export const loginUser = async (req,res) => {
 
 //signup user
 export const signupUser = async (req,res) => {
-    const {email, password, firstName, lastName, categories} = req.body
+    const email = req.body.email;
+    const password = req.body.password;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const categories = req.body.categories;
+    const image = req.body.image;
+    
+    // const {email, password, firstName, lastName, categories} = req.body
+    // const {image} = req.file;
 
     try {
-        const user = await User.signup(email, password, firstName, lastName, categories)
+        const user = await User.signup(email, password, firstName, lastName, categories, image)
 
         //create token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token, firstName, lastName, categories})
+        res.status(200).json({email, token, firstName, lastName, categories, image})
 
     } catch (error) {
         res.status(400).json({error: error.message})
