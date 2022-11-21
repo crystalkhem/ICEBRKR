@@ -59,6 +59,16 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact="true"
+                  to="/chat"
+                  // activeClassName="selected-nav-link"
+                  className="link nav-link"
+                >
+                  Chat
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  exact="true"
                   to="/profileEdit"
                   // activeClassName="selected-nav-link"
                   className="link nav-link"

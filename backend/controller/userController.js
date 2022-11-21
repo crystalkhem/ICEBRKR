@@ -23,7 +23,7 @@ export const loginUser = async (req,res) => {
         //create token
         const token = createToken(user._id)
  
-        res.status(200).json({_id:user._id, name: `${user.firstName} ${user.lastName}`, email: user.email, firstName: user.firstName, lastName: user.lastName, token: token})
+        res.status(200).json({_id:user._id, name: `${user.firstName} ${user.lastName}`, email: user.email, firstName: user.firstName, lastName: user.lastName, image: user.image, token: token})
 
     } catch (error) {
         res.status(400).json({error: error.message})

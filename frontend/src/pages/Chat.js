@@ -1,6 +1,6 @@
 const Chat = () => {
     return(
-<h1>chatbox coming soon</h1>
+        <table></table>
     )
 }
 

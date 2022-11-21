@@ -5,63 +5,61 @@ import TinderCard from "react-tinder-card";
 // import Button from "@material-ui/core/Button";
 import "./Match.css";
 
-const db = [
-  {
-    name: "Random Guy",
-    url: "https://image.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg",
-    description: "lorem ipsum",
-  },
-  {
-    name: "Short guy",
-    url: "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
-    description: "lorem ipsum",
-  },
-  {
-    name: "Test guy",
-    url: "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg",
-    description: "lorem ipsum",
-  },
-];
+// const db = [
+//   {
+//     name: "Random Guy",
+//     url: "https://image.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg",
+//     description: "lorem ipsum",
+//   },
+//   {
+//     name: "Short guy",
+//     url: "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
+//     description: "lorem ipsum",
+//   },
+//   {
+//     name: "Test guy",
+//     url: "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg",
+//     description: "lorem ipsum",
+//   },
+// ];
 
 const alreadyRemoved = [];
-let peopleState = db;
+// let peopleState = db;
 
 const Match = () => {
 
-    // const [users, setUsers] = useState(null)
+    const [users, setUsers] = useState(null)
 
-    // useEffect(() => {
-    //     const fetchUsers = async () => {
-    //         const response = await fetch('http://localhost:4000/api/user/all-users')
-    //         const json = await response.json()
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const response = await fetch('http://localhost:4000/api/user/all-users')
+            const json = await response.json()
 
-    //         if (response.ok) {
-    //             setUsers(json)
-    //         }
-    //     }
+            if (response.ok) {
+                setUsers(json)
+            }
+        }
 
-    //     fetchUsers()
-    // }, [])
+        fetchUsers()
+    }, [])
 
-    // console.log(users)
-
-  const [people, setPeople] = useState(db);
+  // console.log(users)
 
   const childRefs = useMemo(
     () =>
-      Array(db?.length)
+      Array(users?.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [users]
   );
 
   const swipe = (dir) => {
-    const cardsLeft = people.filter(
-      (person) => !alreadyRemoved.includes(person.name)
+    const cardsLeft = users.filter(
+      (user) => !alreadyRemoved.includes(user.firstName)
     );
     if (cardsLeft.length) {
-      const toBeRemoved = cardsLeft[cardsLeft.length - 1].name;
-      const index = db.map((person) => person.name).indexOf(toBeRemoved);
+      const toBeRemoved = cardsLeft[cardsLeft.length - 1].firstName;
+      const index = users.map((user) => user.firstName).indexOf(toBeRemoved);
       alreadyRemoved.push(toBeRemoved);
       childRefs[index].current.swipe(dir);
     }
@@ -70,18 +68,18 @@ const Match = () => {
   return (
     <div>
       <div className="card_container">
-        {people.map((person, index) => (
+        {users && users.map((user, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
-            key={person.name}
+            key={user.firstName}
             preventSwipe={["up", "down"]}
           >
             <div
-              style={{ backgroundImage: "img" }}
+              style={{ backgroundImage: 'url(' + user.image + ')' }}
               className="card"
             >
-              <h3>{person.name}</h3>
+              <h3>{user.firstName}</h3>
             </div>
           </TinderCard>
         ))}
@@ -104,7 +102,7 @@ const Match = () => {
           Break
         </button>
       </div>
-      <button variant="contained">View Profile</button>
+      {/* <button variant="contained">View Profile</button> */}
     </div>
   );
 };
