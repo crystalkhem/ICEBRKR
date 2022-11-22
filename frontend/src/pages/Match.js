@@ -6,7 +6,6 @@ import TinderCard from "react-tinder-card";
 import "./Match.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-
 const alreadyRemoved = [];
 // let peopleState = db;
 
@@ -47,6 +46,7 @@ const Match = () => {
         .map((i) => React.createRef()),
     [users]
   );
+
 
   // const updateCurrentIndex = (val) => {
   //   setCurrentIndex(val)
