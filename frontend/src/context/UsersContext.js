@@ -8,6 +8,10 @@ export const usersReducer = (state, action) => {
       return {
         users: action.payload
       }
+    case 'UPDATE_USER':
+      return {
+        users: state.users?.map((user) => (user._id === action.payload._id ? action.payload: user))
+      }
     default:
       return state
   }

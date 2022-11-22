@@ -63,10 +63,9 @@ const Signup = () => {
          <input type="text" onChange={(event) => setLastName(event.target.value)} value={lastName} />
         <br />
        
-<b>
-        Categories of Interest:</b><br />
+        <b>Categories of Interest:</b><br />
         <div className="cat">
-        <div className="checkbox">music<input type="checkbox" onChange={(event) => onClick(event)} name="layerone" value="music" /><br /></div>
+        <div className="checkbox">music<input type="checkbox" onChange={onClick} name="layerone" value="music" /><br /></div>
         
         <div className="checkbox">sports<input type="checkbox" onChange={onClick} name="layerone" value="sports" /><br /></div>
         

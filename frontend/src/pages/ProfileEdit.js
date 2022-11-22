@@ -1,21 +1,27 @@
 import { useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+
+    const navigate = useNavigate();
     const { user } = useAuthContext();
-    const [name, setName] = useState('')
-    const [age, setAge] = useState('')
-    const [major, setMajor] = useState('')
-    const [bio, setBio] = useState('')
+    const id = user?._id
+    const [ firstName, setFirstName] = useState('')
+    const [ lastName, setLastName] = useState('')
+    // const [age, setAge] = useState(user.age)
+    // const [major, setMajor] = useState(user.major)
+    // const [bio, setBio] = useState(user.bio)
+    const [image, setImage] = useState('')
+
     const [error, setError] = useState('')
 
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const id = user._id
-        const profile = {name, age, major, bio}
+        const profile = {firstName, lastName, image}
 
-        const response = await fetch('http://localhost:4000/api/profiles/:id', {
+        const response = await fetch(`http://localhost:4000/api/user/${id}/edit`, {
             method: 'PATCH',
             body: JSON.stringify(profile),
             headers: {
@@ -34,33 +40,55 @@ const Profile = () => {
             setError(null)
             console.log('new profile added', json)
         }
+        
+        navigate('/profile');
+
 
     }
+
+    const handleImage = (event) => {
+        const file = event.target.files[0];
+        setFileToBase(file);
+      }
+    
+      const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setImage(reader.result);
+        }
+      }
 
     return (
         <div className="create">
         <form className="create_profile" onSubmit={handleSubmit} >
-        <h1>Time To Create Your Profile!</h1>
-        <h2>Please Enter Profile Details:</h2>
+        <h1>Edit Your Profile Here!!</h1>
 
-        <label>Name: </label>
-         <input type="text" onChange={(event) => setName(event.target.value)} value={name} />
+        <label>First Name: </label>
+         <input type="text" onChange={(event) => setFirstName(event.target.value)} value={firstName} />
+        <br />
+        <label>Last Name: </label>
+         <input type="text" onChange={(event) => setLastName(event.target.value)} value={lastName} />
         <br />
 
-        <label>Age: </label>
+        {/* <label>Age: </label>
          <input type="text" onChange={(event) => setAge(event.target.value)} value={age} />
         <br />
 
         <label>Major: </label>
          <input type="text" onChange={(event) => setMajor(event.target.value)} value={major} />
-        <br />
+        <br /> */}
 
-        <label>Brief Bio: </label>
+        {/* <label>Brief Bio: </label>
          <input type="text" onChange={(event) => setBio(event.target.value)} value={bio} />
-        <br />
+        <br /> */}
+
+        <b><label>Upload Image: </label></b>
+         <input onChange={handleImage} type="file" id="imageupload"  name="image"/>
+        <br /> 
 
 
-        <button>submit</button>
+        <button>Update</button>
         <br/>
 
         </form>

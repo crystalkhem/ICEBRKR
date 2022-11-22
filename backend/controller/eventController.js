@@ -1,4 +1,5 @@
 import Events from '../models/eventModel.js'
+import mongoose from 'mongoose';
 
 
 // get all events
@@ -18,6 +19,22 @@ export const createEvent = async (req,res) => {
         res.status(400).json({error: error.message})
     }
 }
+
+export const deleteEvent = async (req, res) => {
+    const { id } = req.params
+  
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({error: 'No such event'})
+    }
+  
+    const event = await Events.findOneAndDelete({_id: id})
+  
+    if(!event) {
+      return res.status(400).json({error: 'No such event'})
+    }
+  
+    res.status(200).json(event)
+  }
 
 
 

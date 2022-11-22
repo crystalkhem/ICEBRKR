@@ -8,13 +8,13 @@ export const eventsReducer = (state, action) => {
       return {
         events: action.payload
       }
-    case 'CREAT_EVENT':
+    case 'CREATE_EVENT':
       return {
-        events: [action.payload, ...state.workouts]
+        events: [action.payload, ...state.events]
       }
     case 'DELETE_EVENT':
       return {
-        workouts: state.events.filter((e) =>e._id !==action.payload._id)
+        ...state, events: state.events?.filter((e) =>e._id !== action.payload)
       }
     default:
       return state

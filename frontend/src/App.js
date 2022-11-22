@@ -22,15 +22,15 @@ function App() {
       <br/>
       <div className="pages">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dash" exact element={<Dash />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/event" element={<Event />} />
           <Route path="/chat" element={<Chat />} />
-          <Route path="/match" element={<Match />} /> 
-          <Route path="/profileEdit" element={<ProfileEdit />} />
+          <Route path="/match" element={<Match />} />
+          <Route path="/:id/edit" element={<ProfileEdit />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<Users />} />
         </Routes>

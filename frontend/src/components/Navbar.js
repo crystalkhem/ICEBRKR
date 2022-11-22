@@ -9,6 +9,8 @@ const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
 
+  const id = user?._id;
+
   const handleClick = () => {
     logout();
     
@@ -69,7 +71,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact="true"
-                  to="/profileEdit"
+                  to={`${id}/edit`}
                   // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >

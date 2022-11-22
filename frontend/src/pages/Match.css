@@ -13,11 +13,23 @@
 
 .card > h3 {
   position: absolute;
+  bottom: 50px;
+  color: white;
+}
+
+.card > h4 {
+  position: absolute;
+  bottom: 30px;
+  color: white;
+}
+
+.card > h5 {
+  position: absolute;
   bottom: 10px;
   color: white;
 }
 
-.card_contaner{
+.card_container{
   display: flex;
   justify-content: center;
   margin-top: 5vh;
@@ -28,9 +40,27 @@
 }
 
 .swipe_Buttons{
-  position: fixed;
-  bottom: 10vh;
-  width: 45%;
+  position: absolute;
+  bottom: 20px;
+  margin: 20px;
+  padding: 0 500px;
   display: flex;
-  justify-content: space-around;
+}
+
+.swipe_Buttons button {
+  flex-shrink: 0;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #063970;
+  transition: 200ms;
+  margin: 0 10px;
+  font-weight: bolder;
+  width: 160px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.10);
+}
+
+.swipe_Buttons button:hover {
+  transform: scale(1.05);
 }

@@ -3,7 +3,7 @@ import EventDetails from "../components/EventDetails"
 import './Dash.css';
 
 const Dash = () => {
-    const [events, setEvents] = useState(null)
+    const [events, setEvents] = useState()
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -18,6 +18,8 @@ const Dash = () => {
         fetchEvents()
     }, [])
 
+    console.log(events);
+    
     return(
         <div className="dash">
             <div className="workouts">

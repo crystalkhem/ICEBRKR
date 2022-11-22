@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import TinderCard from "react-tinder-card";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 // import ThumbDownIcon from "@material-ui/icons/ThumbDown";
@@ -28,22 +28,26 @@ const alreadyRemoved = [];
 
 const Match = () => {
 
-    const [users, setUsers] = useState(null)
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const response = await fetch('http://localhost:4000/api/user/all-users')
-            const json = await response.json()
-
-            if (response.ok) {
-                setUsers(json)
-            }
-        }
-
-        fetchUsers()
-    }, [])
-
-  // console.log(users)
+  
+  
+  const [users, setUsers] = useState(null)
+  
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await fetch('http://localhost:4000/api/user/all-users')
+      const json = await response.json()
+      
+      if (response.ok) {
+        setUsers(json)
+      }
+    }
+    
+    fetchUsers()
+  }, [])
+  
+  const [currentIndex, setCurrentIndex] = useState(users?.length - 1)
+  const [lastDirection, setLastDirection] = useState()
+  const currentIndexRef = useRef(currentIndex)
 
   const childRefs = useMemo(
     () =>
@@ -52,6 +56,17 @@ const Match = () => {
         .map((i) => React.createRef()),
     [users]
   );
+
+  const updateCurrentIndex = (val) => {
+    setCurrentIndex(val)
+    currentIndexRef.current = val
+  }
+
+  const swiped = (direction, nameToDelete, index) => {
+    setLastDirection(direction)
+    updateCurrentIndex(index - 1)
+  }
+  const canSwipe = currentIndex >= 0
 
   const swipe = (dir) => {
     const cardsLeft = users.filter(
@@ -65,14 +80,20 @@ const Match = () => {
     }
   };
 
+  const handleClick = () => {
+    console.log("clicked");
+  }
+
   return (
-    <div>
+    <div className="align_buttons">
+      <h1>Match</h1>
       <div className="card_container">
         {users && users.map((user, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
             key={user.firstName}
+            onSwipe={(dir) => swiped(dir, user.firstName, index)}
             preventSwipe={["up", "down"]}
           >
             <div
@@ -80,29 +101,27 @@ const Match = () => {
               className="card"
             >
               <h3>{user.firstName}</h3>
+              <h4 style={{ bottom: "30px" }}>Email: {user.email}</h4>
+              <h4 style={{ bottom: "10px" }}>Bio: I am fuckin Awesome</h4>
             </div>
           </TinderCard>
         ))}
       </div>
       <div className="swipe_Buttons">
-        <button
-          variant="contained"
-          color="secondary"
+        <button style={{backgroundColor: '#AF3E4D'}}
         //   startIcon={<ThumbDownIcon />}
           onClick={() => swipe("left")}
         >
           Freeze
         </button>
         <button
-          variant="contained"
-          color="primary"
         //   startIcon={<FavoriteIcon />}
           onClick={() => swipe("right")}
         >
           Break
         </button>
       </div>
-      {/* <button variant="contained">View Profile</button> */}
+      {/* <button variant="contained" onClick={handleClick}>View Profile</button> */}
     </div>
   );
 };
