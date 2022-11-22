@@ -21,7 +21,7 @@ const Chat = () => {
         })
 
     return(
-    <div className="chatbox"><h1>chatbox coming soon</h1>
+    <div className="chatbox"><h1>chatbox</h1>
 
     <div className="message-container">{outputmsg}</div>
     <form id="send-container">
