@@ -89,7 +89,8 @@ export const signupUser = async (req,res) => {
         //create token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token, firstName, lastName, categories, image})
+        res.status(200).json({_id:user._id, name: `${user.firstName} ${user.lastName}`, email: user.email, firstName: user.firstName, lastName: user.lastName, image: user.image, token: token, categories: user.categories, id: user._id})
+
 
     } catch (error) {
         res.status(400).json({error: error.message})

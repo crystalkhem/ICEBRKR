@@ -61,6 +61,7 @@ const Navbar = () => {
               <li>
                 <NavLink
                   exact="true"
+<<<<<<< Updated upstream
                   to="/chat"
                   // activeClassName="selected-nav-link"
                   className="link nav-link"
@@ -72,6 +73,9 @@ const Navbar = () => {
                 <NavLink
                   exact="true"
                   to={`${id}/edit`}
+=======
+                  to="/profileEdit"
+>>>>>>> Stashed changes
                   // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
@@ -95,7 +99,7 @@ const Navbar = () => {
                   // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  All users
+                  All Users
                 </NavLink>
               </li>
               <li>
