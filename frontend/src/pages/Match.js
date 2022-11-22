@@ -4,35 +4,31 @@ import TinderCard from "react-tinder-card";
 // import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 // import Button from "@material-ui/core/Button";
 import "./Match.css";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-// const db = [
-//   {
-//     name: "Random Guy",
-//     url: "https://image.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg",
-//     description: "lorem ipsum",
-//   },
-//   {
-//     name: "Short guy",
-//     url: "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
-//     description: "lorem ipsum",
-//   },
-//   {
-//     name: "Test guy",
-//     url: "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg",
-//     description: "lorem ipsum",
-//   },
-// ];
 
 const alreadyRemoved = [];
 // let peopleState = db;
 
 const Match = () => {
+  const { user } = useAuthContext()
 
     const [users, setUsers] = useState(null)
 
+
     useEffect(() => {
+      
         const fetchUsers = async () => {
-            const response = await fetch('http://localhost:4000/api/user/all-users')
+          console.log(user.id, user.categories)
+          let link = null
+          if (user.categories === 'sports') {
+             link = 'http://localhost:4000/api/user/getSports/' + user.id
+          } else if (user.categories === 'movies') {
+             link = 'http://localhost:4000/api/user/getMovies/' + user.id
+          } else if (user.categories === 'music') {
+             link = 'http://localhost:4000/api/user/getMusic/' + user.id
+          }
+            const response = await fetch(link)
             const json = await response.json()
 
             if (response.ok) {
@@ -43,7 +39,6 @@ const Match = () => {
         fetchUsers()
     }, [])
 
-  // console.log(users)
 
   const childRefs = useMemo(
     () =>

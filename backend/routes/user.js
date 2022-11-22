@@ -1,5 +1,5 @@
 import express from 'express'
-import { signupUser, loginUser, updateProfile, getUsers } from '../controller/userController.js';
+import { signupUser, loginUser, updateProfile, getUsers, getMovies, getSports, getMusic } from '../controller/userController.js';
 const router = express.Router()
 import multer from 'multer';
 
@@ -22,6 +22,10 @@ router.post('/login', loginUser)
 // signup route
 router.post('/signup', signupUser)
 
+//
+router.get('/getMovies/:id', getMovies)
+router.get('/getSports/:id', getSports)
+router.get('/getMusic/:id', getMusic)
 
 router.patch('/signup/:id', updateProfile)
 

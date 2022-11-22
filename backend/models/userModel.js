@@ -21,10 +21,10 @@ const userSchema = new Schema({
         required: true,
     },
     categories: {
-        type: []
+        type: String
     },
     image: {
-        type: String,
+        type: String
     },
     dob: {
         type: Date,
