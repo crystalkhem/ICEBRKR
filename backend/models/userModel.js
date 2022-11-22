@@ -21,21 +21,18 @@ const userSchema = new Schema({
         required: true,
     },
     categories: {
-        type: []
+        type: String
     },
     image: {
-        type: String,
-    },
-    dob: {
-        type: Date,
-    },
+        type: String
+    }
     // createdAt: {
     //     type: Date,
     //     default: new Date(),
     // }
 })
 
-userSchema.statics.signup = async function(email, password, firstName, lastName, categories, image, dob) {
+userSchema.statics.signup = async function(email, password, firstName, lastName, categories, image) {
     //validate
 
     if (!email || !password || !firstName || !lastName) {
@@ -60,7 +57,7 @@ userSchema.statics.signup = async function(email, password, firstName, lastName,
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({email, password: hash, firstName, lastName, categories, image, dob})
+    const user = await this.create({email, password: hash, firstName, lastName, categories, image})
 
     return user
 }

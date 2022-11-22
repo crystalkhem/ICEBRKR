@@ -12,16 +12,13 @@ const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
   const { signup, isLoading, error  } = useSignup();
-  const [categories, updateCats] = useState([])
+  const [categories, updateCats] = useState()
 
   const  onClick = (event) => {
       if (event.target.checked) {
-      updateCats([...categories, event.target.value])
-      } else {
-          let elementToRemove = event.target.value
-          updateCats(prev => prev.filter(categories => categories !== elementToRemove ))
-      }
+      updateCats(event.target.value)
   }
+}
 
   const handleImage = (event) => {
     const file = event.target.files[0];

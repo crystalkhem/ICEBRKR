@@ -1,0 +1,13 @@
+.message-container {
+    width: 70%;
+    padding: 5px;
+    background-color: #063970;
+    color: white;
+    align-content: center;
+}
+
+.typing {
+    width: 70%;
+    padding: 5px;
+    align-content: center;
+}
