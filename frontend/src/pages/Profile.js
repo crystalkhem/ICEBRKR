@@ -13,16 +13,16 @@ const Profile = () => {
         <div>
            {user &&( <div style={{display: "flex", justifyContent: "space-between"}}>
             <div>
-                <img src={user.image} alt=""/>
+                <img style={{ width:"100%", height: "auto" }} src={user.image} alt=""/>
             </div>
             <div>
             {/* <button onClick={handleEdit}>edit</button> */}
             <h1>Name: {user.firstName}</h1>
             <p>Email: {user.email}</p>
             {/* <p>Date of Birth:</p> */}
-            <p>Major:</p>
-            <p>Interests: </p>
-            <p>Bio:</p>
+            <p>Major: Computer Science</p>
+            <p>Interests: {user.categories}</p>
+            <p>Bio: Coding is fun!!</p>
 
             </div>
             </div>

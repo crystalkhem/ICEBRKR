@@ -45,7 +45,7 @@ const Navbar = () => {
                   // activeClassName="selected-nav-link"
                   className="link nav-link"
                 >
-                  Events
+                  Create Event
                 </NavLink>
               </li>
               <li>
